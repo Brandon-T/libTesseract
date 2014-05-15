@@ -18,7 +18,7 @@
 
 #include "Exports.hxx"
 
-EXPORT tesseract::TessBaseAPI* Tesseract_Create()
+tesseract::TessBaseAPI* Tesseract_Create()
 {
 	return new tesseract::TessBaseAPI();
 }
@@ -44,25 +44,16 @@ void Tesseract_SetImage(tesseract::TessBaseAPI* tesseract_ptr, const unsigned ch
 	tesseract_ptr->SetImage(imagedata, width, height, bytes_per_pixel, bytes_per_line);
 }
 
-const char* Tesseract_GetUTF8Text(tesseract::TessBaseAPI* tesseract_ptr)
+const char* Tesseract_GetUTF8Text(tesseract::TessBaseAPI* tesseract_ptr, uint32_t* len)
 {
     char* utf8_text_ptr = tesseract_ptr->GetUTF8Text();
-    int len = strlen(utf8_text_ptr);
-
-    char* pascal_string = new char[len + (sizeof(int) * 2) + 1]; //allocate a buffer representing pascal strings..
-    strcpy(&pascal_string[sizeof(int) * 2], utf8_text_ptr); //copy the string into the pascal buffer..
-    pascal_string[len + (sizeof(int) * 2) + 1] = 0;  //null terminate it..
-    delete [] utf8_text_ptr;
-
-    *((unsigned int*)&pascal_string[0]) = -1;  //set pascal reference count to constant..
-    *((unsigned int*)&pascal_string[sizeof(int)]) = len; //set the length of the pascal string..
-
-    return &pascal_string[sizeof(int) * 2];
+    *len = strlen(utf8_text_ptr);
+    return utf8_text_ptr;
 }
 
 void Tesseract_FreeUTF8Text(char* &utf8_text_ptr)
 {
-    delete[] &utf8_text_ptr[-(sizeof(int) * 2)]; //delete the pascal string..
+    delete[] utf8_text_ptr;
     utf8_text_ptr = NULL;
 }
 

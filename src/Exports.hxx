@@ -19,7 +19,11 @@
 #ifndef EXPORTS_HXX_INCLUDED
 #define EXPORTS_HXX_INCLUDED
 
+
+#define _BLOB_DEFINED
+#define _LPBLOB_DEFINED
 #define __BLOB_T_DEFINED
+#define _tagBLOB_DEFINED
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
 
@@ -39,7 +43,7 @@ static const char* PascalExports[] =
     (char*)"Tesseract_Init", (char*)"Function Tesseract_Init(tesseract_ptr: Pointer; datapath, language: String): Integer;",
 	(char*)"Tesseract_End", (char*)"Procedure Tesseract_End(var tesseract_ptr: Pointer);",
     (char*)"Tesseract_SetImage", (char*)"Procedure Tesseract_SetImage(tesseract_ptr: Pointer; const imagedata: Pointer; width, height, bytes_per_pixel, bytes_per_line: Integer);",
-    (char*)"Tesseract_GetUTF8Text", (char*)"Function Tesseract_GetUTF8Text(tesseract_ptr: Pointer): PChar;",
+    (char*)"Tesseract_GetUTF8Text", (char*)"Function Tesseract_GetUTF8Text(tesseract_ptr: Pointer; var len: UInt32): PChar;",
     (char*)"Tesseract_FreeUTF8Text", (char*)"Procedure Tesseract_FreeUTF8Text(var utf8_text_ptr: PChar);",
 	(char*)"Tesseract_SetVariable", (char*)"Function Tesseract_SetVariable(tesseract_ptr: Pointer; name, value: String): Boolean;",
 	(char*)"Tesseract_Clear", (char*)"Procedure Tesseract_Clear(tesseract_ptr: Pointer);"
@@ -61,7 +65,7 @@ extern "C"
     EXPORT int Tesseract_Init(tesseract::TessBaseAPI* tesseract_ptr, const char* datapath, const char* language);
     EXPORT void Tesseract_End(tesseract::TessBaseAPI* &tesseract_ptr);
     EXPORT void Tesseract_SetImage(tesseract::TessBaseAPI* tesseract_ptr, const unsigned char* imagedata, int width, int height, int bytes_per_pixel, int bytes_per_line);
-    EXPORT const char* Tesseract_GetUTF8Text(tesseract::TessBaseAPI* tesseract_ptr);
+    EXPORT const char* Tesseract_GetUTF8Text(tesseract::TessBaseAPI* tesseract_ptr, uint32_t* len);
     EXPORT void Tesseract_FreeUTF8Text(char* &utf8_text_ptr);
     EXPORT bool Tesseract_SetVariable(tesseract::TessBaseAPI* tesseract_ptr, const char* name, const char* value);
     EXPORT void Tesseract_Clear(tesseract::TessBaseAPI* tesseract_ptr);
