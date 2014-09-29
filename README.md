@@ -18,7 +18,7 @@ Libraries to link to (in order):
   
   
   
-To build the above libraries, use the following commands (in order):
+To build the above libraries, use the following commands (in order.. Use: ```--host=x86_64-w64-mingw32``` for 64-bit  OR ```--host=i686-pc``` for 32-bit compilation):
 
 
 Building ZLIB: http://zlib.net/zlib-1.2.8.tar.gz
