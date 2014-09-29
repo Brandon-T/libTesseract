@@ -18,7 +18,20 @@ Libraries to link to (in order):
   
   
   
-To build the above libraries, use the following commands (in order.. Use: ```--host=x86_64-w64-mingw32``` for 64-bit  OR ```--host=i686-pc``` for 32-bit compilation):
+To build the above libraries, use the following commands (in order):
+
+Pre-Build Notes:
+
+    #To run ./autobuild, you need to install libtool:
+    sudo apt-get install libtool
+    #OR
+    sudo apt-get install libtool-dev
+
+    #To compile as 32-bit:
+    ./configure --host=i686-pc
+    
+    #To compile as 64-bit:
+    ./configure --host=x86_64-w64-mingw32
 
 
 Building ZLIB: http://zlib.net/zlib-1.2.8.tar.gz
