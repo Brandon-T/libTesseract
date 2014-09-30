@@ -57,7 +57,7 @@ Building LIBPNG: http://prdownloads.sourceforge.net/libpng/libpng-1.6.10.tar.gz?
     ZLIBINC=/usr/local/include \
     make -f makefile.gcc
 
-    cp png.h pngconf.h /usr/local/include
+    cp png.h pngconf.h pnglibconf.h /usr/local/include
     cp libpng.a libpng.dll.a /usr/local/lib
 
 
