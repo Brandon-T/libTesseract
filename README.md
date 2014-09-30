@@ -70,7 +70,7 @@ BUILDING LIBJPEG: http://www.ijg.org/files/jpegsrc.v8d.tar.gz
 BUILDING LEPTONICA: http://www.leptonica.com/source/leptonica-1.70.tar.gz
 
     ./autobuild
-    ./configure --no-programs
+    ./configure --disable-programs
     make install
 
 
