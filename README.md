@@ -28,10 +28,10 @@ Pre-Build Notes:
     sudo apt-get install libtool-dev
 
     #To compile as 32-bit:
-    ./configure --host=i686-pc
+    ./configure --build=i686-pc
     
     #To compile as 64-bit:
-    ./configure --host=x86_64-w64-mingw32
+    ./configure --build=x86_64-w64-mingw32
 
 
 Building ZLIB: http://zlib.net/zlib-1.2.8.tar.gz
